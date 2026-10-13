@@ -1,19 +1,31 @@
-require('dotenv').config();
+require("dotenv").config()
 
-const express = require('express');
-const apiRoutes = require('./route');
+const express = require("express")
+const mongoose = require("mongoose")
+const authRouter = require("./routes/auth.router")
 
-const app = express();
+const app = express()
 
-app.use(express.json());
-app.use('/api', apiRoutes);
+app.use(express.json())
 
-if (require.main === module) {
-  const port = process.env.PORT || 3000;
 
-  app.listen(port, () => {
-    console.log(`Backend server listening on port ${port}`);
-  });
+app.use("/auth",authRouter)
+
+async function connectDB() {
+    try {
+        // Connect the client to the server
+        await mongoose.connect(process.env.MONGODB_URI);
+        console.log('Successfully connected to MongoDB using Native Driver!');
+        
+        // You can now interact with your collections here (e.g., db.collection('users'))
+
+    } catch (error) {
+        console.error('Connection error:', error);
+    }
 }
 
-module.exports = app;
+
+app.listen(3000, () => {
+    console.log("Server is running on PORT 3000")
+    connectDB()
+})
