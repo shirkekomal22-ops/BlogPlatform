@@ -4,6 +4,7 @@
 //deleteUser
 //getallblogs
 //deleteblog
+
 //getallcategories
 //createcategory
 //updatecategory
@@ -11,6 +12,7 @@
 
 // blockUser
 // unblockUser
+
 
 
 
