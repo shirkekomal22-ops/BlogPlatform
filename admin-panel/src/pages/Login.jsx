@@ -6,6 +6,8 @@ import Checkbox from "../components/Checkbox";
 import Button from "../components/Button";
 import Alert from "../components/Alert";
 
+
+
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function validate({ email, password }) {
